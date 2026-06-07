@@ -1,38 +1,66 @@
 import { useState } from 'react';
 import { Calendar, User, Phone, BookOpen, MessageSquare, ArrowRight, ArrowLeft, Check } from 'lucide-react';
+import { supabase } from '../../utils/supabase';
+
+const emptyFormData = {
+  fullName: '',
+  email: '',
+  phone: '',
+  course: '',
+  datetime: '',
+  message: '',
+};
+
+const courseOptions = [
+  { value: 'Beginner Course - 8 weeks', label: 'Beginner Course - 8 weeks' },
+  { value: 'Advanced Course - 6 weeks', label: 'Advanced Course - 6 weeks' },
+  { value: 'Intensive Course - 2 weeks', label: 'Intensive Course - 2 weeks' },
+  { value: 'Single Lesson - $45', label: 'Single Lesson - $45' },
+  { value: 'Package of 10 - $400', label: 'Package of 10 - $400' },
+  { value: 'Full Course - $750', label: 'Full Course - $750' },
+];
 
 export default function BookingForm() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    course: '',
-    datetime: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(emptyFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const totalSteps = 3;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (currentStep < totalSteps) {
+      setSubmitError('');
       setCurrentStep(currentStep + 1);
     } else {
-      alert('Thank you for your booking request! We will contact you shortly to confirm your lesson.');
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        course: '',
-        datetime: '',
-        message: '',
+      setIsSubmitting(true);
+      setSubmitError('');
+
+      const { error } = await supabase.from('bookings').insert({
+        full_name: formData.fullName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        course: formData.course,
+        preferred_datetime: new Date(formData.datetime).toISOString(),
+        message: formData.message.trim() || null,
       });
+
+      setIsSubmitting(false);
+
+      if (error) {
+        setSubmitError('Sorry, your booking could not be submitted. Please try again.');
+        return;
+      }
+
+      alert('Thank you for your booking request! We will contact you shortly to confirm your lesson.');
+      setFormData(emptyFormData);
       setCurrentStep(1);
     }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setSubmitError('');
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -192,12 +220,11 @@ export default function BookingForm() {
                       className="w-full px-4 py-3 rounded-2xl border border-[rgba(0,0,0,0.1)] backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent transition-all hover:bg-white"
                     >
                       <option value="">Select a course</option>
-                      <option value="beginner">Beginner Course - 8 weeks</option>
-                      <option value="advanced">Advanced Course - 6 weeks</option>
-                      <option value="intensive">Intensive Course - 2 weeks</option>
-                      <option value="single">Single Lesson - $45</option>
-                      <option value="package10">Package of 10 - $400</option>
-                      <option value="full">Full Course - $750</option>
+                      {courseOptions.map((course) => (
+                        <option key={course.value} value={course.value}>
+                          {course.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -260,7 +287,7 @@ export default function BookingForm() {
                       <div className="flex justify-between">
                         <span className="text-[#6E6E73]">Course:</span>
                         <span className="text-[#1D1D1F] font-medium">
-                          {formData.course ? formData.course.charAt(0).toUpperCase() + formData.course.slice(1) : ''}
+                          {formData.course}
                         </span>
                       </div>
                     </div>
@@ -268,6 +295,12 @@ export default function BookingForm() {
                 </div>
               )}
             </div>
+
+            {submitError && (
+              <p className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {submitError}
+              </p>
+            )}
 
             <div className="flex gap-4 mt-8">
               {currentStep > 1 && (
@@ -282,14 +315,16 @@ export default function BookingForm() {
               )}
               <button
                 type="submit"
-                disabled={!isStepValid()}
+                disabled={!isStepValid() || isSubmitting}
                 className={`flex-1 px-6 py-3 rounded-full font-medium transition-all flex items-center justify-center gap-2 ${
-                  isStepValid()
+                  isStepValid() && !isSubmitting
                     ? 'bg-gradient-to-r from-[#0071E3] to-[#0051A8] text-white hover:shadow-2xl hover:-translate-y-1'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                {currentStep === totalSteps ? (
+                {isSubmitting ? (
+                  'Submitting...'
+                ) : currentStep === totalSteps ? (
                   <>
                     <Check className="w-4 h-4" />
                     Complete Booking

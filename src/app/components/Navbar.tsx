@@ -7,7 +7,31 @@ export default function Navbar() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navOffset = 80;
+      const startPosition = window.scrollY;
+      const targetPosition =
+        element.getBoundingClientRect().top + window.scrollY - navOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 900;
+      const startTime = performance.now();
+
+      const easeInOutCubic = (time: number) =>
+        time < 0.5 ? 4 * time * time * time : 1 - Math.pow(-2 * time + 2, 3) / 2;
+
+      const animateScroll = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        window.scrollTo({
+          top: startPosition + distance * easeInOutCubic(progress),
+        });
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+
+      requestAnimationFrame(animateScroll);
       setMobileMenuOpen(false);
     }
   };

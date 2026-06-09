@@ -18,9 +18,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0071E3] to-[#0051A8] flex items-center justify-center">
-              <span className="font-bold text-white">DP</span>
+              <span className="font-bold text-white">SD</span>
             </div>
-            <span className="text-[#1D1D1F] text-xl font-semibold">DrivePro Academy</span>
+            <span className="text-[#1D1D1F] text-xl font-semibold">Saini Driving School</span>
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -30,9 +30,7 @@ export default function Navbar() {
             <button onClick={() => scrollToSection('courses')} className="text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
               Courses
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
-              Pricing
-            </button>
+
             <button onClick={() => scrollToSection('instructors')} className="text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
               Instructors
             </button>

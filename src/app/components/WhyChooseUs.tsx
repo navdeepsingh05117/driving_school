@@ -35,26 +35,26 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-[#F5F5F7]">
+    <section className="px-4 py-12 sm:px-6 sm:py-16 lg:py-20 bg-gradient-to-b from-white to-[#F5F5F7]">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-4">Why Choose DrivePro Academy</h2>
-          <p className="text-xl text-[#6E6E73] max-w-2xl mx-auto">
+        <div className="text-center mb-9 sm:mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-3 sm:mb-4">Why Choose Saini Driving School</h2>
+          <p className="text-base sm:text-xl text-[#6E6E73] max-w-2xl mx-auto leading-relaxed">
             Experience the difference with our comprehensive approach to driver education
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 min-[430px]:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
                 key={index}
-                className="backdrop-blur-xl bg-[rgba(255,255,255,0.72)] border border-[rgba(0,0,0,0.1)] rounded-2xl p-8 shadow-sm hover:shadow-md hover:-translate-y-2 transition-all"
+                className="h-full min-h-[188px] backdrop-blur-xl bg-[rgba(255,255,255,0.72)] border border-[rgba(0,0,0,0.1)] rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm hover:shadow-md hover:-translate-y-2 transition-all"
               >
-                <Icon className="w-7 h-7 text-[#0071E3] mb-6" />
-                <h3 className="text-xl font-semibold text-[#1D1D1F] mb-3">{feature.title}</h3>
-                <p className="text-[#6E6E73] leading-relaxed">{feature.description}</p>
+                <Icon className="w-6 h-6 lg:w-7 lg:h-7 text-[#0071E3] mb-4 lg:mb-6" />
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-[#1D1D1F] mb-2 lg:mb-3">{feature.title}</h3>
+                <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">{feature.description}</p>
               </div>
             );
           })}

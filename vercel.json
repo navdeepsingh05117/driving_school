@@ -1,7 +1,12 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/((?!sitemap.xml|robots.txt|google18fea901c6f6e98b.html|favicon.ico|favicon.svg|apple-touch-icon.png|android-chrome-192x192.png|android-chrome-512x512.png|og-image.png|site.webmanifest).*)",
+      "source": "/setup",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/:path*",
       "destination": "/index.html"
     }
   ],

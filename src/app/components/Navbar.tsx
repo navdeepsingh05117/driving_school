@@ -77,6 +77,9 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             className="lg:hidden p-2 text-[#1D1D1F]"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -84,7 +87,7 @@ export default function Navbar() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 space-y-3 animate-in fade-in slide-in-from-top-5 duration-300">
+          <div id="mobile-navigation" className="lg:hidden mt-4 pb-4 space-y-3 animate-in fade-in slide-in-from-top-5 duration-300">
             <button onClick={() => scrollToSection('home')} className="block w-full text-left py-2 text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
               Home
             </button>

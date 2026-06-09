@@ -21,10 +21,10 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)] lg:gap-12 items-center">
           <div className="space-y-5 sm:space-y-7 lg:space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#DCEBFA] bg-[#F4F9FF] px-4 py-2 text-sm font-semibold text-[#0071E3]">
+            {/* <div className="inline-flex items-center gap-2 rounded-full border border-[#DCEBFA] bg-[#F4F9FF] px-4 py-2 text-sm font-semibold text-[#0071E3]">
               <BadgeCheck className="h-4 w-4" />
               Punjab's trusted local driving school
-            </div>
+            </div> */}
 
             <h1 className="text-[3rem] sm:text-6xl md:text-7xl lg:text-[5rem] font-semibold text-[#1D1D1F] leading-[0.98]">
               Learn to Drive with Real Confidence

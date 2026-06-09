@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://driving-school-mocha.vercel.app/sitemap.xml
+Sitemap: https://driving-school-mocha.vercel.app/sitemap_index.xml

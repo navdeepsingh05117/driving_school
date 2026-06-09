@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
+import { Analytics } from '@vercel/analytics/react';
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
@@ -94,6 +95,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </AuthProvider>
+      <Analytics />
     </BrowserRouter>
   );
 }

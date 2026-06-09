@@ -51,8 +51,7 @@ export default function Reviews() {
       date: "December 2025",
     },
   ];
-
-  const featuredReviews = reviews.slice(0, 3);
+  const scrollingReviews = [...reviews, ...reviews];
 
   return (
     <section id="reviews" className="scroll-mt-20 px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
@@ -67,10 +66,18 @@ export default function Reviews() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-8">
-          {featuredReviews.map((review, index) => (
-            <ReviewCard key={index} {...review} />
-          ))}
+        <div className="relative mx-auto max-w-[85vw] overflow-hidden py-2 sm:max-w-none sm:py-3 sm:[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="flex w-max gap-[var(--reviews-gap)] [--reviews-gap:1rem] will-change-transform animate-[reviews-scroll_42s_linear_infinite] hover:[animation-play-state:paused] sm:[--reviews-gap:1.25rem] lg:[--reviews-gap:2rem]">
+            {scrollingReviews.map((review, index) => (
+              <div
+                key={`${review.name}-${index}`}
+                className="w-[85vw] max-w-[85vw] shrink-0 sm:w-[320px] sm:max-w-[320px] lg:w-[360px] lg:max-w-[360px]"
+                aria-hidden={index >= reviews.length}
+              >
+                <ReviewCard {...review} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

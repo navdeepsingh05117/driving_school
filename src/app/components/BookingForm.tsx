@@ -320,10 +320,10 @@ export default function BookingForm() {
   return (
     <section
       id="contact"
-      className="scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-white to-[#F5F5F7] px-4 py-12 sm:px-6 sm:py-16 lg:py-24"
+      className="scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-white to-[#F5F5F7] px-4 py-10 sm:px-6 sm:py-16 lg:py-24"
     >
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <div className="text-center mb-6 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-3 sm:mb-4">
             Book Your Trial Lesson
           </h2>
@@ -333,83 +333,85 @@ export default function BookingForm() {
           </p>
         </div>
 
-        <div className="grid items-start gap-5 sm:gap-7 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-10 xl:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]">
-          <div className="order-1 rounded-[22px] border border-[#DDE7F4] bg-white p-5 shadow-[0_18px_46px_rgba(37,99,235,0.08)] sm:p-6 lg:sticky lg:top-24">
-            <div className="space-y-5">
+        <div className="grid items-start gap-3 sm:gap-7 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-10 xl:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]">
+          <div className="order-1 rounded-[20px] border border-[#DDE7F4] bg-white p-4 shadow-[0_18px_46px_rgba(37,99,235,0.08)] sm:rounded-[22px] sm:p-6 lg:sticky lg:top-24">
+            <div className="space-y-3.5 sm:space-y-5">
               <div>
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#2563EB]">
                   Why choose Saini Driving School
                 </p>
-                <h3 className="text-xl font-semibold leading-tight text-[#1D1D1F] sm:text-2xl">
+                <h3 className="text-lg font-semibold leading-tight text-[#1D1D1F] sm:text-2xl">
                   Trusted training for confident drivers.
                 </h3>
               </div>
 
-              <div className="grid gap-2.5">
+              <div className="grid gap-2 sm:gap-2.5">
                 {[
-                  "10,000+ Students Trained",
-                  "98% Pass Rate",
-                  "Certified Instructors",
-                  "Modern Training Vehicles",
-                  "Flexible Scheduling",
-                  "Road Test Preparation",
+                  { label: "10,000+ Students Trained", showOnMobile: true },
+                  { label: "98% Pass Rate", showOnMobile: true },
+                  { label: "Certified Instructors", showOnMobile: true },
+                  { label: "Modern Training Vehicles", showOnMobile: false },
+                  { label: "Flexible Scheduling", showOnMobile: false },
+                  { label: "Road Test Preparation", showOnMobile: true },
                 ].map((item) => (
                   <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-2xl border border-[#E8EEF6] bg-[#F8FBFF] px-3.5 py-3"
+                    key={item.label}
+                    className={`items-center gap-2.5 rounded-2xl border border-[#E8EEF6] bg-[#F8FBFF] px-3 py-2.5 sm:flex sm:gap-3 sm:px-3.5 sm:py-3 ${
+                      item.showOnMobile ? "flex" : "hidden"
+                    }`}
                   >
-                    <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#EFF6FF] text-[#2563EB]">
-                      <Check className="h-4 w-4" />
+                    <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[#EFF6FF] text-[#2563EB] sm:h-7 sm:w-7">
+                      <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </span>
-                    <span className="text-sm font-medium leading-5 text-[#1D1D1F]">
-                      {item}
+                    <span className="text-[13px] font-medium leading-5 text-[#1D1D1F] sm:text-sm">
+                      {item.label}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#DBEAFE] bg-[#EFF6FF] px-3.5 py-2 text-sm font-semibold text-[#1D1D1F]">
-                <Star className="h-4 w-4 fill-[#2563EB] text-[#2563EB]" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#DBEAFE] bg-[#EFF6FF] px-3 py-1.5 text-xs font-semibold text-[#1D1D1F] sm:px-3.5 sm:py-2 sm:text-sm">
+                <Star className="h-3.5 w-3.5 fill-[#2563EB] text-[#2563EB] sm:h-4 sm:w-4" />
                 Rated 4.9/5 by Students
               </div>
 
-              <div className="space-y-3 rounded-2xl border border-[#E8EEF6] bg-white px-4 py-3.5">
+              <div className="space-y-2 rounded-2xl border border-[#E8EEF6] bg-white px-3.5 py-3 sm:space-y-3 sm:px-4 sm:py-3.5">
                 <a
                   href="tel:+919814712236"
-                  className="flex items-center gap-3 text-sm font-medium text-[#1D1D1F] transition-colors hover:text-[#2563EB]"
+                  className="flex items-center gap-2.5 text-xs font-medium text-[#1D1D1F] transition-colors hover:text-[#2563EB] sm:gap-3 sm:text-sm"
                 >
-                  <Phone className="h-4 w-4 text-[#2563EB]" />
+                  <Phone className="h-3.5 w-3.5 text-[#2563EB] sm:h-4 sm:w-4" />
                   +91 98147 12236
                 </a>
-                <div className="flex items-center gap-3 text-sm font-medium text-[#1D1D1F]">
-                  <MapPin className="h-4 w-4 text-[#2563EB]" />
+                <div className="flex items-center gap-2.5 text-xs font-medium text-[#1D1D1F] sm:gap-3 sm:text-sm">
+                  <MapPin className="h-3.5 w-3.5 text-[#2563EB] sm:h-4 sm:w-4" />
                   Bakarpur, Punjab
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="order-2 space-y-5 sm:space-y-7">
+          <div className="order-2 space-y-3 sm:space-y-7">
             <div>
               <div className="flex items-center justify-between max-w-lg mx-auto">
                 {[1, 2, 3].map((step) => (
                   <div key={step} className="flex items-center">
                     <div
-                      className={`w-11 h-11 sm:h-12 sm:w-12 rounded-full flex items-center justify-center transition-all ${
+                      className={`flex h-9 w-9 items-center justify-center rounded-full text-sm transition-all sm:h-12 sm:w-12 sm:text-base ${
                         currentStep >= step
                           ? "bg-gradient-to-br from-[#0071E3] to-[#0051A8] text-white shadow-lg"
                           : "backdrop-blur-xl bg-[rgba(255,255,255,0.72)] border border-[rgba(255,255,255,0.45)] text-[#6E6E73]"
                       }`}
                     >
                       {currentStep > step ? (
-                        <Check className="w-5 h-5" />
+                        <Check className="h-4 w-4 sm:h-5 sm:w-5" />
                       ) : (
                         step
                       )}
                     </div>
                     {step < 3 && (
                       <div
-                        className={`w-12 sm:w-20 md:w-28 h-1 mx-2 rounded-full transition-all ${
+                        className={`mx-1.5 h-0.5 w-8 rounded-full transition-all sm:mx-2 sm:h-1 sm:w-20 md:w-28 ${
                           currentStep > step
                             ? "bg-gradient-to-r from-[#0071E3] to-[#0051A8]"
                             : "bg-[rgba(0,0,0,0.1)]"
@@ -419,21 +421,21 @@ export default function BookingForm() {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between max-w-lg mx-auto mt-3 px-1">
-                <span className="text-xs text-[#6E6E73]">
+              <div className="flex justify-between max-w-lg mx-auto mt-2 px-1 sm:mt-3">
+                <span className="text-[11px] text-[#6E6E73] sm:text-xs">
                   Personal Info
                 </span>
-                <span className="text-xs text-[#6E6E73]">
+                <span className="text-[11px] text-[#6E6E73] sm:text-xs">
                   Course
                 </span>
-                <span className="text-xs text-[#6E6E73]">
+                <span className="text-[11px] text-[#6E6E73] sm:text-xs">
                   Schedule
                 </span>
               </div>
             </div>
 
             <div
-          className="w-full backdrop-blur-xl bg-[rgba(255,255,255,0.82)] border border-[#DDE7F4] rounded-[2rem] p-5 sm:p-8 md:p-10 shadow-[0_24px_70px_rgba(0,47,108,0.12)] transition-all duration-500"
+          className="w-full backdrop-blur-xl bg-[rgba(255,255,255,0.82)] border border-[#DDE7F4] rounded-[1.5rem] p-4 shadow-[0_24px_70px_rgba(0,47,108,0.12)] transition-all duration-500 sm:rounded-[2rem] sm:p-8 md:p-10"
           style={{
             boxShadow:
               "0 10px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6)",
@@ -441,7 +443,7 @@ export default function BookingForm() {
         >
           <form
             onSubmit={handleSubmit}
-            className="min-h-[400px] flex flex-col"
+            className="min-h-[360px] flex flex-col sm:min-h-[400px]"
           >
             <div className="flex-1">
               {currentStep === 1 && (

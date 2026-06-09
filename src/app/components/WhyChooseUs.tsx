@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section className="px-4 py-12 sm:px-6 sm:py-16 lg:py-20 bg-gradient-to-b from-white to-[#F5F5F7]">
+    <section className="scroll-mt-20 px-4 py-12 sm:px-6 sm:py-16 lg:py-24 bg-gradient-to-b from-white to-[#F5F5F7]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-9 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-3 sm:mb-4">Why Choose Saini Driving School</h2>
@@ -50,9 +50,11 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={index}
-                className="h-full min-h-[188px] backdrop-blur-xl bg-[rgba(255,255,255,0.72)] border border-[rgba(0,0,0,0.1)] rounded-2xl p-5 sm:p-6 lg:p-8 shadow-sm hover:shadow-md hover:-translate-y-2 transition-all"
+                className="group h-full min-h-[188px] rounded-3xl border border-[#E4ECF5] bg-white/80 p-5 shadow-sm backdrop-blur-xl transition-all hover:-translate-y-2 hover:border-[#CFE4FA] hover:shadow-[0_22px_55px_rgba(0,47,108,0.10)] sm:p-6 lg:p-8"
               >
-                <Icon className="w-6 h-6 lg:w-7 lg:h-7 text-[#0071E3] mb-4 lg:mb-6" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EFF6FF] text-[#0071E3] transition-all group-hover:bg-[#0071E3] group-hover:text-white lg:mb-6">
+                  <Icon className="h-6 w-6" />
+                </div>
                 <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-[#1D1D1F] mb-2 lg:mb-3">{feature.title}</h3>
                 <p className="text-sm sm:text-base text-[#6E6E73] leading-relaxed">{feature.description}</p>
               </div>

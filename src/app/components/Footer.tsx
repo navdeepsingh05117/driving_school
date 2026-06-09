@@ -10,7 +10,7 @@ export default function Footer() {
   const quickLinks = [
     { label: "Home", id: "home" },
     { label: "Courses", id: "courses" },
-    { label: "Pricing", id: "pricing" },
+    
     { label: "Instructors", id: "instructors" },
     { label: "Reviews", id: "reviews" },
   ];
@@ -23,11 +23,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#F5F5F7] via-white to-[#EEF4FB] px-4 pt-5 pb-8 sm:px-6 sm:pt-6 sm:pb-10">
+    <footer className="bg-gradient-to-b from-[#F5F5F7] via-white to-[#EEF4FB] px-4 pt-4 pb-7 sm:px-6 sm:pt-5 sm:pb-9">
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-[2rem] border border-white/80 bg-white/75 px-5 py-7 shadow-[0_24px_70px_rgba(0,47,108,0.10)] backdrop-blur-xl sm:px-8 sm:py-9 lg:px-10">
-          <div className="grid gap-8 md:grid-cols-[1.35fr_0.8fr_1fr] lg:gap-12">
-            <div className="space-y-5">
+        <div className="rounded-[2rem] border border-white/80 bg-white/75 px-5 py-6 shadow-[0_24px_70px_rgba(0,47,108,0.10)] backdrop-blur-xl sm:px-8 sm:py-8 lg:px-10">
+          <div className="grid divide-y divide-[#DDE7F4] md:grid-cols-[1.35fr_0.8fr_1fr] md:divide-y-0 md:gap-10 lg:gap-12">
+            <div className="space-y-5 pb-6 md:pb-0">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0071E3] to-[#0051A8] shadow-lg shadow-blue-500/20">
                   <span className="text-sm font-semibold tracking-wide text-white">
@@ -69,7 +69,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div>
+            <div className="py-6 md:py-0">
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1D1D1F]">
                 Quick Links
               </h3>
@@ -98,7 +98,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div>
+            <div className="pt-6 md:pt-0">
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#1D1D1F]">
                 Contact
               </h3>
@@ -142,7 +142,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-7 flex flex-col gap-3 border-t border-[#DDE7F4] pt-5 text-sm text-[#6E6E73] sm:mt-9 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-6 flex flex-col gap-3 border-t border-[#DDE7F4] pt-5 text-sm text-[#6E6E73] sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
             <p>
               &copy; {new Date().getFullYear()} Saini Driving School. All
               rights reserved.

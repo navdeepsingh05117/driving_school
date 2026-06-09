@@ -3,6 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Showcase from './components/Showcase';
 import Stats from './components/Stats';
 import WhyChooseUs from './components/WhyChooseUs';
 import Courses from './components/Courses';
@@ -20,6 +21,7 @@ function LandingPage() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <Hero />
+      <Showcase />
       <Stats />
       <WhyChooseUs />
       <Courses />

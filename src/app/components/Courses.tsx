@@ -7,20 +7,20 @@ export default function Courses() {
     {
       title: 'Complete Driving Course',
       description: 'Comprehensive one-month program covering everything you need to become a confident driver.',
-      duration: '1 month',
-      lessons: '20 lessons',
+      duration: '4 Weeks',
+      lessons: '20 Lessons',
       features: [
-        'Road practice sessions',
-        'Theory practice and training',
-        'Traffic rules and regulations',
-        'Defensive driving techniques',
-        'Test preparation and guidance',
+        'Road Practice Sessions',
+        'Theory + Practical Training',
+        'Traffic Rules and Regulations',
+        'Defensive Driving Techniques',
+        'Test Preparation',
       ],
     },
   ];
 
   return (
-    <section id="courses" className="px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+    <section id="courses" className="scroll-mt-20 px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-3 sm:mb-4">Our Courses</h2>
@@ -29,7 +29,7 @@ export default function Courses() {
           </p>
         </div>
 
-        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div className="grid items-center gap-6 rounded-[2rem] border border-[#E4ECF5] bg-gradient-to-br from-[#F8FBFF] to-white p-4 shadow-sm sm:gap-8 sm:p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:p-8">
           <div className="order-2 lg:order-1">
             {courses.map((course, index) => (
               <CourseCard key={index} {...course} />
@@ -40,7 +40,7 @@ export default function Courses() {
             <AnimatedSvg
               svg={checklistIllustration}
               label="Personal goals checklist illustration"
-              className="w-full max-w-[23rem] sm:max-w-lg [&_svg]:h-auto [&_svg]:max-h-[380px] sm:[&_svg]:max-h-[460px] [&_svg]:w-full"
+              className="w-full max-w-[20rem] sm:max-w-md lg:max-w-lg [&_svg]:h-auto [&_svg]:max-h-[300px] sm:[&_svg]:max-h-[420px] lg:[&_svg]:max-h-[480px] [&_svg]:w-full"
             />
           </div>
         </div>

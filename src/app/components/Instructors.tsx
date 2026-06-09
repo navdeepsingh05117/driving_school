@@ -16,6 +16,7 @@ export default function Instructors() {
       specialty: "Beginner & Nervous Drivers",
       experience: "12 years experience",
       rating: 5,
+      languages: ["Punjabi", "Hindi"],
       certifications: [
         "ADI Certified",
         "Fleet Trainer",
@@ -27,6 +28,7 @@ export default function Instructors() {
       specialty: "Intensive Courses",
       experience: "12 years experience",
       rating: 5,
+      languages: ["Punjabi", "Hindi"],
       certifications: ["ADI Certified", "Advanced Driving"],
     },
   ];
@@ -74,7 +76,7 @@ export default function Instructors() {
   return (
     <section
       id="instructors"
-      className="px-4 py-12 sm:px-6 sm:py-16 lg:py-20 bg-gradient-to-b from-[#F5F5F7] to-white"
+      className="scroll-mt-20 px-4 py-12 sm:px-6 sm:py-16 lg:py-24 bg-gradient-to-b from-[#F5F5F7] to-white"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
@@ -87,12 +89,12 @@ export default function Instructors() {
           </p>
         </div>
 
-        <div className="grid items-center gap-8 sm:gap-10 lg:gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-          <div className="flex justify-center">
+        <div className="grid items-center gap-8 sm:gap-10 lg:gap-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+          <div className="flex justify-center lg:justify-start">
             <AnimatedSvg
               svg={teacherStudentIllustration}
               label="Teacher and student illustration"
-              className="w-full max-w-[22rem] sm:max-w-xl [&_svg]:h-auto [&_svg]:max-h-[360px] sm:[&_svg]:max-h-[500px] [&_svg]:w-full"
+              className="w-full max-w-[18rem] sm:max-w-sm lg:max-w-md [&_svg]:h-auto [&_svg]:max-h-[260px] sm:[&_svg]:max-h-[360px] lg:[&_svg]:max-h-[420px] [&_svg]:w-full"
             />
           </div>
 

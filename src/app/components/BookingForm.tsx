@@ -9,14 +9,13 @@ import {
   ArrowLeft,
   Check,
   MapPin,
+  Star,
 } from "lucide-react";
 import {
   supabase,
   isSupabaseConfigured,
 } from "../../utils/supabase";
-import AnimatedSvg from "./AnimatedSvg";
 import BookingSuccessModal from "./BookingSuccessModal";
-import exampleIllustration from "../../imports/illustrations/example-not-css.svg?raw";
 
 const emptyFormData = {
   fullName: "",
@@ -321,32 +320,82 @@ export default function BookingForm() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-[#F5F5F7] px-4 py-12 sm:px-6 sm:py-16 lg:py-20"
+      className="scroll-mt-20 relative overflow-hidden bg-gradient-to-b from-white to-[#F5F5F7] px-4 py-12 sm:px-6 sm:py-16 lg:py-24"
     >
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#0071E3] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#0051A8] rounded-full blur-3xl"></div>
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-3 sm:mb-4">
-            Book Your Lesson
+            Book Your Trial Lesson
           </h2>
           <p className="text-base sm:text-xl text-[#6E6E73] max-w-2xl mx-auto leading-relaxed">
-            Ready to start your driving journey? Complete the
-            steps below to schedule your lesson.
+            Start with a focused lesson, meet your instructor, and get a clear
+            plan for becoming road-test ready.
           </p>
         </div>
 
-        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-          <div className="space-y-5 sm:space-y-8">
+        <div className="grid items-start gap-5 sm:gap-7 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-10 xl:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)]">
+          <div className="order-1 rounded-[22px] border border-[#DDE7F4] bg-white p-5 shadow-[0_18px_46px_rgba(37,99,235,0.08)] sm:p-6 lg:sticky lg:top-24">
+            <div className="space-y-5">
+              <div>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#2563EB]">
+                  Why choose Saini Driving School
+                </p>
+                <h3 className="text-xl font-semibold leading-tight text-[#1D1D1F] sm:text-2xl">
+                  Trusted training for confident drivers.
+                </h3>
+              </div>
+
+              <div className="grid gap-2.5">
+                {[
+                  "10,000+ Students Trained",
+                  "98% Pass Rate",
+                  "Certified Instructors",
+                  "Modern Training Vehicles",
+                  "Flexible Scheduling",
+                  "Road Test Preparation",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-[#E8EEF6] bg-[#F8FBFF] px-3.5 py-3"
+                  >
+                    <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#EFF6FF] text-[#2563EB]">
+                      <Check className="h-4 w-4" />
+                    </span>
+                    <span className="text-sm font-medium leading-5 text-[#1D1D1F]">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#DBEAFE] bg-[#EFF6FF] px-3.5 py-2 text-sm font-semibold text-[#1D1D1F]">
+                <Star className="h-4 w-4 fill-[#2563EB] text-[#2563EB]" />
+                Rated 4.9/5 by Students
+              </div>
+
+              <div className="space-y-3 rounded-2xl border border-[#E8EEF6] bg-white px-4 py-3.5">
+                <a
+                  href="tel:+919814712236"
+                  className="flex items-center gap-3 text-sm font-medium text-[#1D1D1F] transition-colors hover:text-[#2563EB]"
+                >
+                  <Phone className="h-4 w-4 text-[#2563EB]" />
+                  +91 98147 12236
+                </a>
+                <div className="flex items-center gap-3 text-sm font-medium text-[#1D1D1F]">
+                  <MapPin className="h-4 w-4 text-[#2563EB]" />
+                  Bakarpur, Punjab
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="order-2 space-y-5 sm:space-y-7">
             <div>
-              <div className="flex items-center justify-between max-w-md mx-auto">
+              <div className="flex items-center justify-between max-w-lg mx-auto">
                 {[1, 2, 3].map((step) => (
                   <div key={step} className="flex items-center">
                     <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                      className={`w-11 h-11 sm:h-12 sm:w-12 rounded-full flex items-center justify-center transition-all ${
                         currentStep >= step
                           ? "bg-gradient-to-br from-[#0071E3] to-[#0051A8] text-white shadow-lg"
                           : "backdrop-blur-xl bg-[rgba(255,255,255,0.72)] border border-[rgba(255,255,255,0.45)] text-[#6E6E73]"
@@ -360,7 +409,7 @@ export default function BookingForm() {
                     </div>
                     {step < 3 && (
                       <div
-                        className={`w-16 md:w-24 h-1 mx-2 rounded-full transition-all ${
+                        className={`w-12 sm:w-20 md:w-28 h-1 mx-2 rounded-full transition-all ${
                           currentStep > step
                             ? "bg-gradient-to-r from-[#0071E3] to-[#0051A8]"
                             : "bg-[rgba(0,0,0,0.1)]"
@@ -370,7 +419,7 @@ export default function BookingForm() {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-between max-w-md mx-auto mt-3">
+              <div className="flex justify-between max-w-lg mx-auto mt-3 px-1">
                 <span className="text-xs text-[#6E6E73]">
                   Personal Info
                 </span>
@@ -384,7 +433,7 @@ export default function BookingForm() {
             </div>
 
             <div
-          className="w-full backdrop-blur-xl bg-[rgba(255,255,255,0.72)] border border-[rgba(255,255,255,0.45)] rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl hover:shadow-[0_20px_60px_rgba(0,113,227,0.2)] hover:-translate-y-2 transition-all duration-500"
+          className="w-full backdrop-blur-xl bg-[rgba(255,255,255,0.82)] border border-[#DDE7F4] rounded-[2rem] p-5 sm:p-8 md:p-10 shadow-[0_24px_70px_rgba(0,47,108,0.12)] transition-all duration-500"
           style={{
             boxShadow:
               "0 10px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6)",
@@ -423,7 +472,7 @@ export default function BookingForm() {
                       onBlur={handleBlur}
                       required
                       autoComplete="name"
-                      className={`min-h-12 w-full px-4 py-3 rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
+                      className={`min-h-[52px] w-full px-4 py-3 text-base rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
                         validationErrors.fullName
                           ? "border-red-400 focus:ring-red-400"
                           : "border-[rgba(0,0,0,0.1)] focus:ring-[#0071E3] focus:border-transparent"
@@ -455,7 +504,7 @@ export default function BookingForm() {
                       onBlur={handleBlur}
                       required
                       autoComplete="email"
-                      className={`min-h-12 w-full px-4 py-3 rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
+                      className={`min-h-[52px] w-full px-4 py-3 text-base rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
                         validationErrors.email
                           ? "border-red-400 focus:ring-red-400"
                           : "border-[rgba(0,0,0,0.1)] focus:ring-[#0071E3] focus:border-transparent"
@@ -488,7 +537,7 @@ export default function BookingForm() {
                       required
                       autoComplete="tel"
                       maxLength={14}
-                      className={`min-h-12 w-full px-4 py-3 rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
+                      className={`min-h-[52px] w-full px-4 py-3 text-base rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
                         validationErrors.phone
                           ? "border-red-400 focus:ring-red-400"
                           : "border-[rgba(0,0,0,0.1)] focus:ring-[#0071E3] focus:border-transparent"
@@ -519,7 +568,7 @@ export default function BookingForm() {
                       required
                       autoComplete="street-address"
                       rows={2}
-                      className={`min-h-20 w-full px-4 py-3 rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white resize-none ${
+                      className={`min-h-24 w-full px-4 py-3 text-base rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white resize-none ${
                         validationErrors.address
                           ? "border-red-400 focus:ring-red-400"
                           : "border-[rgba(0,0,0,0.1)] focus:ring-[#0071E3] focus:border-transparent"
@@ -561,7 +610,7 @@ export default function BookingForm() {
                       value={formData.course}
                       onChange={handleChange}
                       required
-                      className="min-h-12 w-full px-4 py-3 rounded-2xl border border-[rgba(0,0,0,0.1)] backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent transition-all hover:bg-white"
+                      className="min-h-[52px] w-full px-4 py-3 text-base rounded-2xl border border-[rgba(0,0,0,0.1)] backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent transition-all hover:bg-white"
                     >
                       <option value="">Select a course</option>
                       {courseOptions.map((course) => (
@@ -589,7 +638,7 @@ export default function BookingForm() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="min-h-28 w-full px-4 py-3 rounded-2xl border border-[rgba(0,0,0,0.1)] backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent transition-all resize-none hover:bg-white"
+                      className="min-h-32 w-full px-4 py-3 text-base rounded-2xl border border-[rgba(0,0,0,0.1)] backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent transition-all resize-none hover:bg-white"
                       placeholder="Tell us about your experience level or any specific requirements..."
                     />
                   </div>
@@ -624,7 +673,7 @@ export default function BookingForm() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       required
-                      className={`min-h-12 w-full px-4 py-3 rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
+                      className={`min-h-[52px] w-full px-4 py-3 text-base rounded-2xl border backdrop-blur-sm bg-[rgba(255,255,255,0.8)] focus:outline-none focus:ring-2 transition-all hover:bg-white ${
                         validationErrors.datetime
                           ? "border-red-400 focus:ring-red-400"
                           : "border-[rgba(0,0,0,0.1)] focus:ring-[#0071E3] focus:border-transparent"
@@ -695,7 +744,7 @@ export default function BookingForm() {
                 <button
                   type="button"
                   onClick={handlePrevious}
-                  className="min-h-12 flex-1 px-6 py-3 rounded-full border-2 border-[#0071E3] text-[#0071E3] font-medium hover:bg-[#0071E3] hover:text-white transition-all hover:shadow-lg flex items-center justify-center gap-2"
+                  className="min-h-[52px] flex-1 px-6 py-3 rounded-full border-2 border-[#0071E3] text-[#0071E3] font-medium hover:bg-[#0071E3] hover:text-white transition-all hover:shadow-lg flex items-center justify-center gap-2"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Previous
@@ -704,7 +753,7 @@ export default function BookingForm() {
               <button
                 type="submit"
                 disabled={!isStepValid() || isSubmitting}
-                className={`min-h-12 flex-1 px-6 py-3 rounded-full font-medium transition-all flex items-center justify-center gap-2 ${
+                className={`min-h-[52px] flex-1 px-6 py-3 rounded-full font-medium transition-all flex items-center justify-center gap-2 ${
                   isStepValid() && !isSubmitting
                     ? "bg-gradient-to-r from-[#0071E3] to-[#0051A8] text-white hover:shadow-2xl hover:-translate-y-1"
                     : "bg-gray-300 text-gray-500 cursor-not-allowed"
@@ -735,13 +784,6 @@ export default function BookingForm() {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <AnimatedSvg
-              svg={exampleIllustration}
-              label="Booking lesson illustration"
-              className="w-full max-w-[22rem] sm:max-w-xl [&_svg]:h-auto [&_svg]:max-h-[380px] sm:[&_svg]:max-h-[560px] [&_svg]:w-full"
-            />
-          </div>
         </div>
       </div>
 

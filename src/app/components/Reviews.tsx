@@ -1,10 +1,6 @@
-import { useRef, useState } from "react";
 import ReviewCard from "./ReviewCard";
 
 export default function Reviews() {
-  const [activeReview, setActiveReview] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
   const reviews = [
     {
       name: "Prabhjot Singh",
@@ -56,30 +52,10 @@ export default function Reviews() {
     },
   ];
 
-  const scrollToReview = (index: number) => {
-    const carousel = carouselRef.current;
-    const card = carousel?.children[index] as HTMLElement | undefined;
-
-    card?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "start",
-    });
-    setActiveReview(index);
-  };
-
-  const handleCarouselScroll = () => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    const index = Math.round(
-      carousel.scrollLeft / carousel.clientWidth,
-    );
-    setActiveReview(Math.min(index, reviews.length - 1));
-  };
+  const featuredReviews = reviews.slice(0, 3);
 
   return (
-    <section id="reviews" className="px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+    <section id="reviews" className="scroll-mt-20 px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-3 sm:mb-4">
@@ -91,36 +67,8 @@ export default function Reviews() {
           </p>
         </div>
 
-        <div
-          ref={carouselRef}
-          onScroll={handleCarouselScroll}
-          className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {reviews.map((review, index) => (
-            <div key={index} className="w-full flex-none snap-start">
-              <ReviewCard {...review} />
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-2 flex justify-center gap-2 md:hidden">
-          {reviews.map((review, index) => (
-            <button
-              key={review.name}
-              type="button"
-              aria-label={`Show review ${index + 1}`}
-              onClick={() => scrollToReview(index)}
-              className={`h-2.5 rounded-full transition-all ${
-                activeReview === index
-                  ? "w-7 bg-[#0071E3]"
-                  : "w-2.5 bg-[rgba(0,0,0,0.18)]"
-              }`}
-            />
-          ))}
-        </div>
-
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, index) => (
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-8">
+          {featuredReviews.map((review, index) => (
             <ReviewCard key={index} {...review} />
           ))}
         </div>

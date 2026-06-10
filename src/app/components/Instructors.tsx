@@ -12,7 +12,7 @@ import {
 export default function Instructors() {
   const instructors = [
     {
-      name: "Parinder Singh ",
+      name: "Parwinder Singh ",
       specialty: "Beginner & Nervous Drivers",
       experience: "12 years experience",
       rating: 5,

@@ -8,7 +8,6 @@ import Showcase from './components/Showcase';
 import Stats from './components/Stats';
 import WhyChooseUs from './components/WhyChooseUs';
 import Courses from './components/Courses';
-import Pricing from './components/Pricing';
 import Instructors from './components/Instructors';
 import Reviews from './components/Reviews';
 import BookingForm from './components/BookingForm';
@@ -33,7 +32,6 @@ function LandingPage() {
       <Stats />
       <WhyChooseUs />
       <Courses />
-      <Pricing />
       <Instructors />
       <Reviews />
       <BookingForm />

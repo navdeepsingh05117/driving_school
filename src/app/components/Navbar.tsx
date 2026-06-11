@@ -94,9 +94,6 @@ export default function Navbar() {
             <button onClick={() => scrollToSection('courses')} className="block w-full text-left py-2 text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
               Courses
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="block w-full text-left py-2 text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
-              Pricing
-            </button>
             <button onClick={() => scrollToSection('instructors')} className="block w-full text-left py-2 text-[#1D1D1F] hover:text-[#0071E3] transition-colors">
               Instructors
             </button>
